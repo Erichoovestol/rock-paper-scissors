@@ -17,7 +17,17 @@ function playerChoice() {
        input = prompt("Type Rock, Paper, or Scissors");
    }
    input= input.toLowerCase();
-   console.log(input);
+   let check = validateInput(input)
+   while (check == false){
+      input = prompt("Type Rock, Paper or Scissors. Spelling needs to be exact but capitalization doesnt matter");
+      while(input == null){
+        input = prompt("Type Rock, Paper, or Scissors");
+    }
+      
+      input = input.toLowerCase()
+      check = validateInput(input);
+   }
+   //console.log(input);
 
 }
 
@@ -28,12 +38,20 @@ function computerChoice(){
 
 
 function validateInput(choice){
-    if(choices.includes(choice)){
-        return true;
-    } else {
-        return false;
+   return choices.includes(choice);
     }
 
+
+function checkWinner(choiceP,choiceC){
+    if(choiceP === choiceC){
+        return 'Tie';
+    }   else if ((choiceP === 'rock' && 'scissors')|| 
+        (choiceP === 'paper' && 'rock')|| 
+        (choiceP === 'scissors' && 'paper')){
+        return 'player';
+    }   else {
+        return "computer"
+    }
 
 }
 
